@@ -11,8 +11,15 @@ export const BlogProvider = ({ children }) => {
   const addBlogPost = () => {
     dispatch({ type: "ADD_BLOGPOST" });
   };
+  const deleteBlogPost = (dispatch) => {
+    return (id) => {
+      dispatch({ type: "REMOVE_BLOGPOST", payload: id });
+    };
+  };
   return (
-    <BlogContext.Provider value={{ data: blogPost, addBlogPost }}>
+    <BlogContext.Provider
+      value={{ data: blogPost, addBlogPost, deleteBlogPost }}
+    >
       {children}
     </BlogContext.Provider>
   );
