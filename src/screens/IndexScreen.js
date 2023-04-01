@@ -1,5 +1,12 @@
 import React, { useContext } from "react";
-import { View, StyleSheet, Text, FlatList, Button } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Text,
+  FlatList,
+  Button,
+  TouchableOpacity,
+} from "react-native";
 import BlogContext from "../context/BlogContext";
 import { FontAwesome5 } from "@expo/vector-icons";
 const IndexScreen = () => {
@@ -17,7 +24,10 @@ const IndexScreen = () => {
           return (
             <View style={styles.container}>
               <Text style={{ fontSize: 18 }}>{item.title}</Text>
-              <FontAwesome5 name="trash" size={24} color="black" />
+              <Text>{item.id}</Text>
+              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                <FontAwesome5 name="trash" size={24} color="black" />
+              </TouchableOpacity>
             </View>
           );
         }}
